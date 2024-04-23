@@ -8,11 +8,12 @@ export const useMailsStore = defineStore("mails", {
     mails: [] as EmailMessage[],
     selectedMail: {} as EmailMessage,
     pagination: {} as Meta,
-    query: "" as string,
+    query: "D" as string,
     sort: "-@timestamp",
     size: 10,
     from: 0,
 
+    searched_value:'' as string,
 
   }),
   getters: {},
@@ -41,9 +42,27 @@ export const useMailsStore = defineStore("mails", {
       this.pagination = data.meta;
 
       this.selectedMail=this.mails[0];
+
+
+
+      console.log(this.query);
+
     },
     updatedSelectedMail(index: number): void {
       this.selectedMail = this.mails[index];
+    },
+    async prevPage() {
+      if (!this.pagination.has_prev_page) return;
+      this.from -= this.size;
+      await this.search_data();
+      console.log("pipipi2")
+    },
+    async nextPage() {
+      if (!this.pagination.has_next_page) return;
+      this.from += this.size;
+      await this.search_data();
+
+      console.log("pipipi1")
     },
   },
 });
