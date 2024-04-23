@@ -8,7 +8,7 @@
       </tr>
     </thead>
     <tbody>
-        <tr v-for="mail in mails" :key="mail.message_id">
+        <tr v-for="(mail, i) in mails" :key="i" @click="updatedSelectedMail(i)">
             <td class="px-6 border-r-4 py-4">{{ mail.from }}</td>
             <td class="px-6 border-r-4 py-4">{{ mail.to }}</td>
             <td class="px-6 border-r-4 py-4">{{ mail.subject }}</td>
@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import { mapState } from 'pinia';
+import { mapActions, mapState } from 'pinia';
 import { useMailsStore } from '../stores/mails';
 
 
@@ -27,7 +27,8 @@ export default {
   computed: {
     ...mapState(useMailsStore,['mails'])
   },
-  mounted() {
-  },
+  methods:{
+    ...mapActions(useMailsStore,['updatedSelectedMail'])
+  }
 };
 </script>

@@ -5,13 +5,15 @@ import { Meta } from "../models/response/pagination";
 
 export const useMailsStore = defineStore("mails", {
   state: () => ({
-    query: "" as string,
     mails: [] as EmailMessage[],
     selectedMail: {} as EmailMessage,
     pagination: {} as Meta,
+    query: "" as string,
+    sort: "-@timestamp",
     size: 10,
     from: 0,
-    sort: "-@timestamp",
+
+
   }),
   getters: {},
   actions: {
@@ -22,7 +24,7 @@ export const useMailsStore = defineStore("mails", {
         from: this.from,
         size: this.size,
         sort: this.sort,
-      }
+      };
       const options = {
         method: "POST",
         headers: {
@@ -37,6 +39,8 @@ export const useMailsStore = defineStore("mails", {
       const data = await response.json();
       this.mails = data.data;
       this.pagination = data.meta;
+
+      this.selectedMail=this.mails[0];
     },
     updatedSelectedMail(index: number): void {
       this.selectedMail = this.mails[index];
