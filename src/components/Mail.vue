@@ -44,7 +44,7 @@ import { useMailsStore } from '../stores/mails';
 
 export default {
   computed:{
-    ...mapState(useMailsStore,['selectedMail'])
+    ...mapState(useMailsStore,['selectedMail','separated_Word'])
   },
   components: {},
 };

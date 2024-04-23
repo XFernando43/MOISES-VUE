@@ -24,9 +24,6 @@ export default {
     },
     methods:{
         ...mapActions(useMailsStore,['search_data']),
-        prueba(){
-            console.log(this.query);
-        }
     }
 };
 </script>

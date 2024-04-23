@@ -9,12 +9,14 @@ export const useMailsStore = defineStore("mails", {
     mails: [] as EmailMessage[],
     selectedMail: {} as EmailMessage,
     pagination: {} as Meta,
-
+    
     sort: "-@timestamp",
     size: 10,
     from: 0,
-
     searched_value: "" as string,
+
+    separated_Word:[] as string[],
+
   }),
   getters: {},
   actions: {

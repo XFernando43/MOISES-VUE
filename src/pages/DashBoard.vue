@@ -35,22 +35,6 @@ export default defineComponent({
     }
   },
   methods: {
-    reset_searchRequest() {
-      this.query = "";
-      this.from = 0;
-      this.size = 10;
-      this.sort = "-@timestamp"
-    },
-    update_query(value: string) {
-      this.query = value;
-      this.from = 0;
-      this.size = 10;
-    },
-    update_sort(value: string) {
-      this.sort = value;
-      this.from = 0;
-      this.size = 10;
-    },
     ...mapActions(useMailsStore,['search_data']),
   },
   components:{
