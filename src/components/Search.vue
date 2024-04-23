@@ -7,8 +7,6 @@
         <button class="bg-teal-700 hover:bg-teal-500 text-white font-bold py-2 px-4 rounded" @click="search_data(query)">Search</button>
     </div>
 
-    <button @click="prueba">PIPI</button>
-
 </template>
 
 

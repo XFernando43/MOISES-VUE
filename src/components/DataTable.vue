@@ -1,4 +1,7 @@
 <template>
+  
+  <NewMailModal />
+  
   <Search />
   <table class="text-sm text-left shadow-2xl">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 border border-blue-950">
@@ -24,6 +27,7 @@
 <script lang="ts">
 import Pagination from './Pagination.vue';
 import Search from './Search.vue';
+import NewMailModal from './NewMailModal.vue';
 import { mapActions, mapState } from 'pinia';
 import { useMailsStore } from '../stores/mails';
 
@@ -38,7 +42,8 @@ export default {
   },
   components:{
     Pagination,
-    Search
+    Search,
+    NewMailModal
   }
 };
 </script>
