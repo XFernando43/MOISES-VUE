@@ -3,7 +3,7 @@
       <button
       :disabled="!pagination.has_prev_page"
       class="py-2 px-4 bg-green-500 text-white rounded disabled:opacity-50"
-      @click="prevPage"
+      @click="prevPage()"
       >Prev</button>
       <span class="text-sm">
         Página
@@ -11,7 +11,7 @@
         de {{ pagination.total_pages }}
       </span> 
       <button
-        @click="nextPage"
+        @click="nextPage()"
         :disabled="!pagination.has_next_page"
         class="py-2 px-4 bg-green-500 text-white rounded disabled:opacity-50"
         >Next</button>
@@ -23,6 +23,7 @@ import { mapActions, mapState } from 'pinia';
 import { useMailsStore } from '../stores/mails';
 
   export default {
+    
     computed:{
         ...mapState(useMailsStore,['pagination'])
     },
