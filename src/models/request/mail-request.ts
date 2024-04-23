@@ -1,9 +1,9 @@
 
 export interface MailRequest {
-    from: number;
-    to:string,
+    content:string,
+    from: string;
+    to:string[],
     subject:string,
     date:string,
-    content:string,
 
 }

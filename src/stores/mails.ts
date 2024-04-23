@@ -19,7 +19,7 @@ export const useMailsStore = defineStore("mails", {
   getters: {},
   actions: {
     async search_data(query?: string) {
-      const url = "http://localhost:3000/api/v1/mail/search";
+      const url = `${import.meta.env.VITE_API_URL_BASE}/mail/search`;
       const request: SearchRequest = {
         query: query || "",
         from: this.from || 0,
@@ -45,14 +45,15 @@ export const useMailsStore = defineStore("mails", {
 
       console.log(query);
       console.log(this.mails);
+      console.log(url);
     },
 
     async postEmail(from:string,to: string[], subject: string, content: string) {
-      // try {
-        const url = "http://localhost:3000/api/v1/mail";
+      try {
+        const url = `${import.meta.env.VITE_API_URL_BASE}/mail`;
         const date = new Date();
         const currentTime = date.toISOString().split("T")[1].split(".")[0];
-        const newMail = {
+        const newMail:MailRequest = {
           content: content,
           date: date.toISOString().split("T")[0] + "T" + currentTime + "-08:00",
           from: from,
@@ -68,10 +69,10 @@ export const useMailsStore = defineStore("mails", {
         };
         const response = await fetch(url, options);
         console.log(response);
-      // } catch (error) {
-      //   console.log(error)
-      //   throw error
-      // }
+      } catch (error) {
+        console.log(error)
+        throw error
+      }
     },
 
     updatedSelectedMail(index: number): void {
