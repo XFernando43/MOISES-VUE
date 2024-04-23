@@ -41,7 +41,7 @@ export const useMailsStore = defineStore("mails", {
       this.mails = data.data;
       this.pagination = data.meta;
 
-      this.selectedMail=this.mails[0];
+      this.selectedMail=this.mails[0]; // aca validar cuando no haya resultados de la api
 
 
       console.log(query);
